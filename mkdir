@@ -1,0 +1,30 @@
+#创建目录 
+mkdir -p $WORK/b001/           
+ 
+#编译文件 
+cd /data/webroot/qingke/godemo/dump 
+/usr/local/Cellar/go/1.13.4/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -complete -buildid Rw-tIgJPD3wmhn5zj7iu/Rw-tIgJPD3wmhn5zj7iu -goversion go1.13.4 -D _/data/webroot/qingke/godemo/dump -importcfg $WORK/b001/importcfg -pack -c=4 ./default.go $WORK/b001/_gomod_.go 
+ 
+#生成链接库配置importcfg.link文件 
+cat >$WORK/b001/importcfg.link << 'EOF' # internal 
+packagefile  command-line-arguments=$WORK/b001/_pkg_.a 
+packagefile runtime=/usr/local/go/pkg/darwin_amd64/runtime.a 
+packagefile internal/bytealg=/usr/local/go/pkg/darwin_amd64/internal/bytealg.a 
+packagefile internal/cpu=/usr/local/go/pkg/darwin_amd64/internal/cpu.a 
+packagefile runtime/internal/atomic=/usr/local/go/pkg/darwin_amd64/runtime/internal/atomic.a 
+packagefile runtime/internal/math=/usr/local/go/pkg/darwin_amd64/runtime/internal/math.a 
+packagefile runtime/internal/sys=/usr/local/go/pkg/darwin_amd64/runtime/internal/sys.a 
+EOF 
+ 
+#创建b001中exe目录 
+mkdir -p $WORK/b001/exe/ 
+cd . 
+ 
+#连接生成a.out可执行文件 
+/usr/local/Cellar/go/1.13.4/libexec/pkg/tool/darwin_amd64/link -o $WORK/b001/exe/a.out -importcfg $WORK/b001/importcfg.link -buildmode=exe -buildid=TwK52M06SyTj6MiQ9MRi/Rw-tIgJPD3wmhn5zj7iu/Rw-tIgJPD3wmhn5zj7iu/TwK52M06SyTj6MiQ9MRi -extld=clang $WORK/b001/_pkg_.a 
+ 
+#更新a.out id
+/usr/local/Cellar/go/1.13.4/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b001/exe/a.out # internal 
+ 
+#mv a.out改变名为default的可执行程序 
+mv $WORK/b001/exe/a.out default
