@@ -1,0 +1,14 @@
+package main
+ 
+type s1 struct {
+	a int64
+	b int64
+}
+ 
+func main() {
+	s := new(s1)
+ 
+	var i interface{}
+ 
+	i = s
+	_ = i
