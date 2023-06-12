@@ -1,3 +1,14 @@
-test
-add 
-brain was hot
+create procedure p4(in score int,out result varchar(12))
+
+BEGIN
+
+	if score >= 85 then
+		set result := '优秀';
+	elseif score >= 60 then
+		set result := '及格';
+	else
+		set result := '不及格';
+
+	end if;
+
+END;
