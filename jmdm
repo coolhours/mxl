@@ -4,7 +4,7 @@ function miyu($num){
 	if($num=='dw'){
 		$miyu = ['🐱','🐶','🐷','🐍'];
 	}elseif($num=='my'){
-		$miyu = ['喵','咪','呜','～'];
+		$miyu = ['喵 ','咪','呜','～'];
 	}elseif($num=='sy'){
 		$miyu = ['嗷','呜','啊','～'];
 	}elseif($num=='gy'){
