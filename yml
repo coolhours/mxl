@@ -13,3 +13,6 @@ spec:
       nodePort: 30000
   selector:
     k8s-app: kubernetes-dashboard
+vim
+
+1w
