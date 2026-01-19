@@ -111,3 +111,6 @@ function daddslashes($string, $force = 0, $strip = FALSE) {
         return $string;
     }
 ?>
+
+
+echo
